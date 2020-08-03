@@ -17,7 +17,7 @@ If you use this code, please cite our accademic paper as:
 
 What you need  
 -----
-You need [radare2](https://github.com/radare/radare2) installed in your system. 
+You need [radare2](https://github.com/radare/radare2) installed in your system. [Install reference](https://blog.csdn.net/weixin_40732417/article/details/105586107)
   
 Quickstart
 -----
