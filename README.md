@@ -147,3 +147,4 @@ Run_Record
 import tensorflow as tf 替换为<br/>
 import tensorflow.compat.v1 as tf<br/>
 tf.disable_v2_behavior()<br/>
+4. 使用tensorflow==1.14.0
