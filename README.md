@@ -148,3 +148,6 @@ import tensorflow as tf 替换为<br/>
 import tensorflow.compat.v1 as tf<br/>
 tf.disable_v2_behavior()<br/>
 4. 使用tensorflow==1.14.0
+5. tensorflow屏蔽版本更迭的warning<br/>
+import tensorflow.python.util.deprecation as deprecation<br/>
+deprecation._PRINT_DEPRECATION_WARNINGS = False<br/>
