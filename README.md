@@ -138,3 +138,12 @@ In our code we use [godown](https://github.com/circulosmeos/gdown.pl) to downloa
 circulosmeos, the creator of godown.
 
 We thank Davide Italiano for the useful discussions. 
+
+Run_Record
+---
+1. python2 import tensorflow很慢
+2. 作者的代码使用python3版本
+3. tensorflow2.0提示错误：module 'tensorflow' has no attribute 'placeholder'
+import tensorflow as tf 替换为
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
