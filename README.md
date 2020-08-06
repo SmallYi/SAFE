@@ -143,7 +143,7 @@ Run_Record
 ---
 1. python2 import tensorflow很慢
 2. 作者的代码使用python3版本
-3. tensorflow2.0提示错误：module 'tensorflow' has no attribute 'placeholder'
-import tensorflow as tf 替换为
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+3. tensorflow2.0提示错误：module 'tensorflow' has no attribute 'placeholder'<br/>
+import tensorflow as tf 替换为<br/>
+import tensorflow.compat.v1 as tf<br/>
+tf.disable_v2_behavior()<br/>
