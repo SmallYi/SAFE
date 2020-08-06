@@ -150,3 +150,4 @@ tf.disable_v2_behavior()<br/>
 4. 使用tensorflow==1.14.0
 5. tensorflow屏蔽版本更迭的warning<br/>
 tf.logging.set_verbosity(tf.logging.ERROR)<br/>
+6. 输出日志目录/mnt/jiangs/SAFE_Pro/SAFE_Core/data/experiments/openssl/out/runs保存了模型的大文件，比较耗时
