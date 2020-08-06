@@ -26,8 +26,8 @@ To create the embedding of a function:
 git clone https://github.com/gadiluna/SAFE.git
 pip install -r requirements
 chmod +x download_model.sh
-./download_model.sh
-python safe.py -m data/safe.pb -i helloworld.o -a 100000F30
+./download_model.sh #需要访问外网
+python safe.py -m data/safe.pb -i helloworld.o -a 100000F30 #-i是目标二进制，-a是目标函数地址
 ```
 #### What to do with an embedding?
 Once you have two embeddings ```embedding_x``` and ```embedding_y``` you can compute the similarity of the corresponding functions as: 
@@ -96,22 +96,32 @@ see file: asm_embedding/InstructionsConverter.py
 ## Train the model
 If you want to train the model using our datasets you have to first use:
 ```
- python3 downloader.py -td
+ python3 downloader.py -td # 需要访问外网
 ```
 This will download the datasets into data folder. Note that the datasets are compressed so you have to decompress them yourself.
 This data will be an sqlite databases.
 To start the train use neural_network/train.sh.
 The db can be selected by changing the parameter into train.sh.
 If you want information on the dataset see our paper.
+```python
+./neural_network/train.sh # 使用作者的数据训练模型
+```
 
 ## Create your own dataset
 If you want to create your own dataset you can use the script ExperimentUtil into the folder
 dataset creation.
+```python
+./dataset_creation/ExperimentUtil.py # 创建自己的数据集
+```
 
 ## Create a functions knowledge base
 If you want to use SAFE binary code search engine you can use the script ExperimentUtil to create
 the knowledge base.
 Then you can search through it using the script into function_search
+```python
+./dataset_creation/ExperimentUtil.py # 创建函数知识库
+function_search # 函数搜索
+```
 
 
 Related Projects
