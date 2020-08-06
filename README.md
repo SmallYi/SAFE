@@ -96,7 +96,7 @@ see file: asm_embedding/InstructionsConverter.py
 ## Train the model
 If you want to train the model using our datasets you have to first use:
 ```
- python3 downloader.py -td # 需要访问外网
+ python downloader.py -td # 需要访问外网
 ```
 This will download the datasets into data folder. Note that the datasets are compressed so you have to decompress them yourself.
 This data will be an sqlite databases.
@@ -113,7 +113,7 @@ cd neural_network
 If you want to create your own dataset you can use the script ExperimentUtil into the folder
 dataset creation.
 ```python
-(venv-js)python3 ./dataset_creation/ExperimentUtil.py # 创建自己的数据集
+(venv-js)python ./dataset_creation/ExperimentUtil.py # 创建自己的数据集
 ```
 
 ## Create a functions knowledge base
@@ -121,7 +121,7 @@ If you want to use SAFE binary code search engine you can use the script Experim
 the knowledge base.
 Then you can search through it using the script into function_search
 ```python
-(venv-js)python3 ./dataset_creation/ExperimentUtil.py # 创建函数知识库
+(venv-js)python ./dataset_creation/ExperimentUtil.py # 创建函数知识库
 function_search # 函数搜索
 ```
 
