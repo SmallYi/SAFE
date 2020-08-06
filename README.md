@@ -111,7 +111,7 @@ If you want information on the dataset see our paper.
 If you want to create your own dataset you can use the script ExperimentUtil into the folder
 dataset creation.
 ```python
-./dataset_creation/ExperimentUtil.py # 创建自己的数据集
+(venv-js)python3 ./dataset_creation/ExperimentUtil.py # 创建自己的数据集
 ```
 
 ## Create a functions knowledge base
@@ -119,7 +119,7 @@ If you want to use SAFE binary code search engine you can use the script Experim
 the knowledge base.
 Then you can search through it using the script into function_search
 ```python
-./dataset_creation/ExperimentUtil.py # 创建函数知识库
+(venv-js)python3 ./dataset_creation/ExperimentUtil.py # 创建函数知识库
 function_search # 函数搜索
 ```
 
