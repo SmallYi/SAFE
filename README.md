@@ -104,7 +104,9 @@ To start the train use neural_network/train.sh.
 The db can be selected by changing the parameter into train.sh.
 If you want information on the dataset see our paper.
 ```python
-./neural_network/train.sh # 使用作者的数据训练模型
+# 使用作者的数据训练模型
+cd neural_network 
+./train.sh
 ```
 
 ## Create your own dataset
