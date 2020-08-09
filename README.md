@@ -18,6 +18,7 @@ If you use this code, please cite our accademic paper as:
 What you need  
 -----
 You need [radare2](https://github.com/radare/radare2) installed in your system. [Install reference](https://blog.csdn.net/weixin_40732417/article/details/105586107)
+ [win_radare2_install](https://bbs.pediy.com/thread-225529.htm)
   
 Quickstart
 -----
@@ -152,3 +153,4 @@ tf.disable_v2_behavior()<br/>
 tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 6. 输出日志目录/mnt/jiangs/SAFE_Pro/SAFE_Core/data/experiments/openssl/out/runs保存了模型的大文件，比较耗时
 7. Tqdm 是一个快速，可扩展的Python进度条
+8. 在window安装好radare2后要配置环境变量，并重启pycharm才能生效
