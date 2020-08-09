@@ -155,3 +155,4 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 6. 输出日志目录/mnt/jiangs/SAFE_Pro/SAFE_Core/data/experiments/openssl/out/runs保存了模型的大文件，比较耗时
 7. Tqdm 是一个快速，可扩展的Python进度条
 8. 在window安装好radare2后要配置环境变量，并重启pycharm才能生效
+9. 原生程序需要的训练数据是.o类型的
