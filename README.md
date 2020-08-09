@@ -157,3 +157,4 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 8. 在window安装好radare2后要配置环境变量，并重启pycharm才能生效
 9. 原生程序需要的训练数据是.o类型的
 10. 原生程序适用于linux环境，如os.setpgrp()
+11. 直接在linux系统中用git下载代码，在windows下载代码再上传到linux系统会导致文件内容编码有错误
