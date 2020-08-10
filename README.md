@@ -162,3 +162,4 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 9. 原生程序需要的训练数据是.o类型的
 10. 原生程序适用于linux环境，如os.setpgrp()
 11. 直接在linux系统中用git下载代码，在windows下载代码再上传到linux系统会导致文件内容编码有错误
+12. 在使用openssl创建数据集时，原程序没有考虑mips的架构故而对mips架构下的二进制分析出错，修改asm_embedding/FunctionAnalyzerRadare.py中function_to_inst函数的filtered_instruction变量
