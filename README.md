@@ -165,4 +165,4 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 12. 在使用openssl创建数据集时，原程序没有考虑mips的架构故而对mips架构下的二进制分析出错，修改asm_embedding/FunctionAnalyzerRadare.py中function_to_inst函数的filtered_instruction变量
 13. 根目录的safe.pb是训练好的完整模型，可用于生成函数embedding
 14. 创建自己的数据集时，文件路径要包括xx/project/compiler/optimization/file_name,因为在保存数据库时字段名称需要对应
-15. tf.set_random_seed(self._seed)在tf<2.0中使用，在tf2.0更新为tf.random.set_seed()
+15. function_search/FunctionSearchEngine.py中:tf.set_random_seed(self._seed)在tf<2.0中使用，在tf2.0更新为tf.random.set_seed()
