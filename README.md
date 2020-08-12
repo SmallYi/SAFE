@@ -166,3 +166,4 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 13. 根目录的safe.pb是训练好的完整模型，可用于生成函数embedding
 14. 创建自己的数据集时，文件路径要包括xx/project/compiler/optimization/file_name,因为在保存数据库时字段名称需要对应
 15. function_search/FunctionSearchEngine.py中:tf.set_random_seed(self._seed)在tf<2.0中使用，在tf2.0更新为tf.random.set_seed()
+16. function_search/EvaluateSearchEngine.py中:find_target_fcn函数中:54行没有“count_func”这个表名，作者自己的数据库AMD64PostgreSQL.db中也没有该表
