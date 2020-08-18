@@ -180,3 +180,4 @@ config.gpu_options.allow_growth=True   #不全部占满显存, 按需分配
 sess = tf.Session(config=config)
 KTF.set_session(sess)
 ```
+20. 源程序在创建用于训练的匹配对时要求project=? AND file_name=? and function_name均相同，仅id不同
