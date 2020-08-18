@@ -168,3 +168,15 @@ tf.logging.set_verbosity(tf.logging.ERROR)<br/>
 15. function_search/FunctionSearchEngine.py中:tf.set_random_seed(self._seed)在tf<2.0中使用，在tf2.0更新为tf.random.set_seed()
 16. function_search/EvaluateSearchEngine.py中:find_target_fcn函数中:54行没有“count_func”这个表名，作者自己的数据库AMD64PostgreSQL.db中也没有该表
 17. gpu显存不足时：可用命令fuser -v /dev/nvidia* ，然后kill -9 
+18. watch -n 1 nvidia-smi 刷新显示GPU使用情况
+19. 指定GPU并且限制GPU用量
+```python
+import os
+import tensorflow as tf
+import keras.backend.tensorflow_backend as KTF
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+config = tf.ConfigProto()  
+config.gpu_options.allow_growth=True   #不全部占满显存, 按需分配
+sess = tf.Session(config=config)
+KTF.set_session(sess)
+```
