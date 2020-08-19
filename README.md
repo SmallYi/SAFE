@@ -182,3 +182,4 @@ KTF.set_session(sess)
 ```
 20. 源程序在创建用于训练的匹配对时要求project=? AND file_name=? and function_name均相同，仅id不同
 21. 作者使用的数据集时.o文件，其project对应版本，file_name对应.o文件
+22. 源程序在划分训练集和测试集时先根据id划分成几块，然后分别从每块中遍历id生成正负样本对，且要求样本对id均在当前块中
