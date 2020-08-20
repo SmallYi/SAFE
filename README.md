@@ -183,3 +183,51 @@ KTF.set_session(sess)
 20. 源程序在创建用于训练的匹配对时要求project=? AND file_name=? and function_name均相同，仅id不同
 21. 作者使用的数据集时.o文件，其project对应版本，file_name对应.o文件
 22. 源程序在划分训练集和测试集时先根据id划分成几块，然后分别从每块中遍历id生成正负样本对，且要求样本对id均在当前块中，目的是加速数据库的划分
+23. 源程序dataset_creation/DataSplitter.py中生成每个epoch需要的训练和测试正负样本对时，存在某个条件判断异常的情况：
+```python
+q1 = cursor.execute('SELECT id FROM functions WHERE project=? AND file_name=? and function_name=?', provenance)
+res = q1.fetchall()
+#candidates = [i[0] for i in res if (i[0] != id and i[0] in ids)] # 原版用i[0] in ids,其中i:(id,);i[0]:id;ids:[(id,)].因此条件不成立导致正样本id集为空
+candidates = [i for i in res if (i[0] != id and i in ids)]
+```
+24. 源程序dataset_creation/DataSplitter.py:create_epoch_pairs()每个epoch重新随机生成正负样本对，而修改的create_pairs_split()每个epoch都是相同的正负样本对，这样的训练效果不好
+25. 测试SAFE的完整流程：
+### 数据集创建
+---
+```python
+dataset_creation/ExperimentUtil.sh
+# python ExperimentUtil.py -db openssl.db -b -s -e -mod "../data/safe_trained_X86.pb" -dir "/mnt/JiangS/SAFE/SAFE/data/experiments/openssl/openssl-1.0.1"
+# -db 生成的数据库文件
+# -b 预处理，保存二进制文件各个函数的指令序列 -dir 源数据文件夹，下层文件结构为path+project+compiler+opt+filename
+# -s 数据集划分，为模型训练做准备
+# -e 生成函数嵌入，可用于函数搜索 -mod 用于函数嵌入的已训练好的safe模型
+```
+### 模型训练
+---
+```python
+neural_network/train.sh
+BASE_PATH="/mnt/JiangS/SAFE/SAFE/data"
+DB_PATH=$BASE_PATH/databases/openssl-101-arm-x86-b-s-e-src.db
+# 主要修改上述用于训练的数据库文件，前提是已经过数据集创建的[-b -s]过程
+DATA_PATH=$BASE_PATH/experiments/openssl
+OUT_PATH=$DATA_PATH/out
+# 输出训练信息的位置，每一轮的auc
+python train.py $RANDOM $TRAINABLE_EMBEDD -o $OUT_PATH -n $DB_PATH -e $EMBEDDER -s 0
+# 其中-s表示是否每一轮训练都保存完整模型信息，好几百兆比较慢
+```
+### 函数搜索
+---
+```python
+function_search/FunctionSearch.sh
+# python EvaluateSearchEngine.py
+dbName = '../data/databases/openssl.db'
+# 修改要搜索的数据库
+evaluate_precision_on_all_functions()：dst_path = 'openssl/'
+# 搜索结果保存的位置
+# 搜索完成后会得到几个json文件
+function_search/fromJsonSearchToPlot.py
+# 上述命令在window环境下运行，根据前面搜索得到的json文件绘制准确率/召回率等曲线
+base_folder = 'openssl/'
+# 设置json文件的位置
+# 绘图完毕后会生成nDCG/precision/recall曲线
+```
