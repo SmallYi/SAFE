@@ -231,3 +231,16 @@ base_folder = 'openssl/'
 # 设置json文件的位置
 # 绘图完毕后会生成nDCG/precision/recall曲线
 ```
+### 两两对比实验
+---
+1、数据集包括openssl-101{d,e,f,g}-{arm,x86}-{O0,O1,O2,O3}
+2、测试用例：
+```python
+openssl-d-arm-O0 <--> openssl-d-x86-O0
+openssl-d-x86-O0 <--> openssl-d-x86-O3
+openssl-d-x86-O1 <--> openssl-d-x86-O2
+openssl-d-x86-O0 <--> openssl-e-x86-O0
+openssl-d-x86-O0 <--> openssl-f-x86-O0
+openssl-d-x86-O0 <--> openssl-g-x86-O0
+# 修改dataset_creation/DataSplitter.py:split_data()函数中训练集和测试集的生成，将测试用例的两个Bin作为测试集，剩余文件作为训练集
+```
