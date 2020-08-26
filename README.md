@@ -191,7 +191,8 @@ res = q1.fetchall()
 candidates = [i for i in res if (i[0] != id and i in ids)]
 ```
 24. 源程序dataset_creation/DataSplitter.py:create_epoch_pairs()每个epoch重新随机生成正负样本对，而修改的create_pairs_split()每个epoch都是相同的正负样本对，这样的训练效果不好
-25. 测试SAFE的完整流程：
+25. 创建RNN模型的代码见neural_network/SiameseSAFE:generate_new_safe()函数
+26. 测试SAFE的完整流程：
 ### 数据集创建
 ---
 ```python
@@ -210,11 +211,14 @@ BASE_PATH="/mnt/JiangS/SAFE/SAFE/data"
 DB_PATH=$BASE_PATH/databases/openssl-101-arm-x86-b-s-e-src.db
 # 主要修改上述用于训练的数据库文件，前提是已经过数据集创建的[-b -s]过程
 DATA_PATH=$BASE_PATH/experiments/openssl
+EMBEDDER=$BASE_PATH/i2v/
 OUT_PATH=$DATA_PATH/out
 # 输出训练信息的位置，每一轮的auc
 python train.py $RANDOM $TRAINABLE_EMBEDD -o $OUT_PATH -n $DB_PATH -e $EMBEDDER -s 0
 # 其中-s表示是否每一轮训练都保存完整模型信息，好几百兆比较慢
 ```
+:[i2v表示](#i2v)
+
 ### 函数搜索
 ---
 ```python
