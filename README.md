@@ -201,6 +201,21 @@ dataset_creation/ExperimentUtil.sh
 # -db 生成的数据库文件
 # -b 预处理，保存二进制文件各个函数的指令序列 -dir 源数据文件夹，下层文件结构为path+project+compiler+opt+filename
 # -s 数据集划分，为模型训练做准备
+## 源代码方式：
+q = c.execute('''SELECT file_name FROM functions ''')
+data = q.fetchall()
+filename = list(set(data))
+首先选择所有file_name（.o文件名），求集合得到filename，然后根据划分比例随机划分给train，test，val表
+之后生成train匹配对时，遍历train表id，在train表中找project, file_name, function_name相同的新id作为正样例
+## 修改的方式：
+q = c.execute('''SELECT arch_version, file_name, optimization FROM functions ''')
+data = q.fetchall()
+filename = list(set(data))
+val_filename.append((bin[0],'openssl',bin[1]))
+train_filename.remove(val_filename)
+根据arch_version, file_name, optimization划分数据库，选择作为测试集的如[openssl-arm-d,O0],[openssl-x86-d,O0]，其余的作为训练集，划分给train，test，val表
+之后生成train匹配对时与原方法相同
+
 # -e 生成函数嵌入，可用于函数搜索 -mod 用于函数嵌入的已训练好的safe模型
 ```
 ### 模型训练
